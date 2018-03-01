@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务四：听指令的小方块（一）</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #chessboard {
+            border-spacing: 0;
+            margin: 20px auto;
+        }
+        #chessboard td {
+            box-sizing: border-box;
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            border-spacing: 0;
+            padding: 0;
+        }
+        #chessboard td+td {
+            border-left-width: 0;
+        }
+        #chessboard tr+tr>td {
+            border-top-width: 0;
+        }
+        #chessboard tr:nth-of-type(2)>td {
+            border-top: 1px solid #000;
+        }
+        #chessboard tr:nth-of-type(11)>td {
+            border-bottom: 1px solid #000;
+        }
+        #chessboard tr>td:nth-of-type(1) {
+            border-left: 1px solid #000;
+        }
+        #chessboard tr>td:nth-of-type(10) {
+            border-right: 1px solid #000;
+        }
+        .box {
+            width: 100%;
+            height: 100%;
+            background-color: red;
+        }
+        .box>.blue {
+            width: 100%;
+            height: 20%;
+            background-color: blue;
+        }
+        .control {
+            width: 380px;
+            margin: 10px auto;
+        }
+        #input {
+            height: 20px;
+            vertical-align: middle;
+            border: 1px solid #ccc;
+        }
+        #btn {
+            vertical-align: middle;
+            width: 40px;
+            height: 20px;
+            border: 1px solid #ccc;
+            margin-left: 5px;
+            border-radius: 4px;
+        }
+
+    </style>
+</head>
+<body>
+<table id="chessboard">
+    <tbody>
+    <tr>
+        <th></th>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+        <th>7</th>
+        <th>8</th>
+        <th>9</th>
+        <th>10</th>
+    </tr>
+    <tr>
+        <th>1</th>
+        <td>
+            <div class="box">
+                <div class="blue"></div>
+            </div>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>2</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>3</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>4</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>5</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>6</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>7</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>8</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>9</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>10</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+<div class="control">
+    <input type="text" id="input"><button id="btn">执行</button>
+</div>
+</body>
+</html>
+<script>
+    /*
+     *在输入框中允许输入如下指令，按下按钮后，使得正方形做相应动作
+     *GO：向蓝色边所面向的方向前进一格（一格等同于正方形的边长）
+     *TUN LEF：向左转（逆时针旋转90度）
+     *TUN RIG：向右转（顺时针旋转90度）
+     *TUN BAC：向后转（旋转180度）
+     *移动不能超出格子空间
+     */
+    (function () {
+
+        var table = document.querySelector('#chessboard');
+        var input = document.querySelector('#input');
+        var btn = document.querySelector('#btn');
+        var x = 0,y = -1; // 移动的x.y轴控制
+        var currentX = 1,currentY = 1; // 初始x,y的值
+        var boxDeg = 0;
+
+        function tunLef() {
+            // 左转
+            boxDeg += 270;
+            tun();
+        }
+        function tunRig() {
+            // 右转
+            boxDeg += 90;
+            tun();
+        }
+        function tunBac() {
+            // 掉头
+            boxDeg += 180;
+            tun();
+        }
+
+        // 判定当前方向，改变移动方向数据
+        function tun() {
+            var box = document.querySelector('.box');
+            box.style.transform = 'rotate('+boxDeg%360+'deg)';
+            if(boxDeg%360 == 270){
+                x = -1;
+                y = 0;
+            }else if(boxDeg%360 == 90){
+                x = 1;
+                y = 0;
+            }else if(boxDeg%360 == 180){
+                x = 0;
+                y = 1;
+            }else {
+                x = 0;
+                y = 1;
+            }
+        }
+
+        function Go() {
+            // 移动
+            var box = document.querySelector('.box');
+            var newX = currentX + x;
+            var newY = currentY + y;
+            // 边界控制
+            if(newX <= 0){
+                newX = 0;
+                alert('到边界了！')
+            }else if(newX > 10){
+                newX = 10;
+                alert('到边界了！')
+            }
+            if(newY <= 0){
+                newY = 0;
+                alert('到边界了！')
+            }else if(newY > 10){
+                newY = 10;
+                alert('到边界了！')
+            }
+
+            if(newX != currentX || newY != currentY){
+                // 排除到边界后不移动情况
+                // 移动方块
+                table.firstElementChild.children[newY].children[newX].appendChild(box.cloneNode(true));
+                // 1原位置处方块删除
+                table.firstElementChild.children[currentY].children[currentX].innerHTML = '';
+                /*
+                ***就算html结构中没有写tbody,table标签的firstElementChild也是默认tbody
+                 */
+
+            }
+
+            // 改变当前x,y
+            currentX = newX;
+            currentY = newY;
+        }
+
+        // 接收指令，做出动作
+        function change() {
+            var str = input.value;
+            console.log(str);
+            if(str == 'GO')
+                Go();
+            else if(str == 'TUN LEF')
+                tunLef();
+            else if(str == 'TUN RIG')
+                tunRig();
+            else if(str == 'TUN BAC')
+                tunBac();
+        }
+        // 执行指令
+        btn.onclick = function () {
+            change();
+        }
+    })()
+</script>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务七：JavaScript和树（一）</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            box-sizing: border-box;
+            margin: 50px auto;
+            width: 800px;
+            height: 200px;
+            border: 1px solid #000;
+            display: flex;
+            padding: 20px 10px;
+        }
+        .boxIn {
+            box-sizing: border-box;
+            display: flex;
+            width: calc(50% - 10px);
+            margin: 5px;
+            height: calc(100% - 10px);
+            border: 1px solid #000;
+            padding: 20px 10px;
+        }
+        
+    </style>
+</head>
+<body>
+<div class="btn">
+    <button>前序遍历</button>
+    <button>中序遍历</button>
+    <button>后序遍历</button>
+</div>
+
+<div class="box">
+    <div class="boxIn">
+        <div class="boxIn">
+            <div class="boxIn">
+
+            </div>
+            <div class="boxIn">
+
+            </div>
+        </div>
+        <div class="boxIn">
+            <div class="boxIn">
+
+            </div>
+            <div class="boxIn">
+
+            </div>
+        </div>
+    </div>
+    <div class="boxIn">
+        <div class="boxIn">
+            <div class="boxIn">
+
+            </div>
+            <div class="boxIn">
+
+            </div>
+        </div>
+        <div class="boxIn">
+            <div class="boxIn">
+
+            </div>
+            <div class="boxIn">
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    /**
+     * 在页面中展现一颗二叉树的结构
+     * 提供一个按钮，显示开始遍历，点击后，以动画的形式呈现遍历的过程
+     * 二叉树的遍历算法和方式自定，前序中序后序皆可，但推荐可以提供多种算法的展示（增加多个按钮，每个按钮对应不同的算法）
+     * 当前被遍历到的节点做一个特殊显示（比如不同的颜色）
+     * 每隔一段时间（500ms，1s等时间自定）再遍历下一个节点
+     */
+    (function () {
+        var box = document.querySelector('.box');
+        var btn = document.querySelector('.btn');
+        var arr = [];
+        var ing = false;
+        // 遍历1 一层层向内
+        function ergodic1(dom) {
+            var doms = dom.children;
+            if(doms.length > 0){
+                doms[0].style.backgroundColor = 'red';
+                doms[1].style.backgroundColor = 'red';
+                setTimeout(function () {
+                    doms[0].style.backgroundColor = '#fff';
+                    doms[1].style.backgroundColor = '#fff';
+                    ergodic1(doms[0]);
+                    ergodic1(doms[1]);
+                },2000)
+            }
+        }
+        // 先序遍历
+        function preOrder(dom) {
+            arr.push(dom);
+            if(dom.firstElementChild != null)
+                preOrder(dom.firstElementChild);
+            if(dom.lastElementChild != null)
+                preOrder(dom.lastElementChild);
+        }
+        // 中序遍历
+        function inOrder(dom) {
+            if(dom.firstElementChild != null)
+                inOrder(dom.firstElementChild);
+            arr.push(dom);
+            if(dom.lastElementChild != null)
+                inOrder(dom.lastElementChild);
+        }
+        // 后序遍历
+        function postOrder(dom) {
+            if(dom.firstElementChild != null)
+                postOrder(dom.firstElementChild);
+            if(dom.lastElementChild != null)
+                postOrder(dom.lastElementChild);
+            arr.push(dom);
+        }
+
+        function ergodic(arr) {
+            if(ing){
+                alert('正在遍历中！')
+                return
+            }
+            ing = true;
+            var i = 0;
+            arr[i].style.backgroundColor = 'red';
+            var show = setInterval(function () {
+                arr[i].style.backgroundColor = '#fff';
+                i++;
+                if(i >= arr.length){
+                    clearInterval(show);
+                    ing = false;
+                    return;
+                }
+                arr[i].style.backgroundColor = 'red';
+            },500)
+        }
+
+        btn.addEventListener('click',function (e) {
+            console.log(event.target.innerHTML);
+           if(event.target.innerHTML == '前序遍历')
+               preOrder(box);
+           if(event.target.innerHTML == '中序遍历')
+               inOrder(box);
+           if(event.target.innerHTML == '后序遍历')
+                postOrder(box);
+            ergodic(arr);
+        });
+
+
+    })()
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

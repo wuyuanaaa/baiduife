@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务五：基础JavaScript练习（二）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            margin-top: 30px;
+            height: 220px;
+        }
+        .boxIn {
+            width: 20px;
+            height: 100%;
+            position: relative;
+            margin: 0 2px;
+            float: left;
+        }
+        .boxIn>span {
+            display: block;
+            width: 20px;
+            height: 100px;
+            background-color: #e36569;
+            cursor: pointer;
+            position: absolute;
+            bottom: 0;
+            left: 2px;
+        }
+    </style>
+</head>
+<body>
+<input type="text" placeholder="请输入10-100的数字" value="">
+<button id="leftIn">左侧入</button>
+<button id="rightIn">右侧入</button>
+<button id="leftOut">左侧出</button>
+<button id="rightOut">右侧出</button>
+<button id="sortBox">排序</button>
+<div class="box">
+    <div class="boxIn"><span></span></div>
+</div>
+</body>
+</html>
+<script>
+    /**
+     * 基于上一任务
+     * 限制输入的数字在10-100
+     * 限制输入的数字在10-100
+     * 队列展现方式变化如图，直接用高度表示数字大小
+     * 实现一个简单的排序功能，如冒泡排序（不限制具体算法），用可视化的方法表达出来
+     */
+    (function () {
+        var box = document.querySelector('.box');
+        var btns = document.querySelectorAll('button');
+        var input = document.querySelector('input');
+        // 效验数字合法性
+        function checkNum(num) {
+            if (!num) {
+                alert('输入为空')
+            } else if (!isNaN(num) && num >= 10 && num <= 100) {
+                return num;
+            } else {
+                alert('输入格式错误');
+                input.value = '';
+            }
+        }
+
+        // 创建span
+        function addDiv(num) {
+            var div = document.createElement('div');
+            div.setAttribute('class','boxIn');
+            //div.className = 'boxIn'
+            var span = document.createElement('span');
+            span.style.height = num * 2 + 'px';
+            div.appendChild(span);
+            return div;
+        }
+
+        // 点击按钮事件函数
+        function leftIn() {
+            var value = input.value;
+            var num = checkNum(value);
+            if (num) {
+                var div = addDiv(num);
+                if(box.children.length < 60){
+                    box.insertBefore(div, box.children[0]);
+                }else {
+                    alert('超过上限！')
+                }
+
+            }
+        }
+
+        function rightIn() {
+            var value = input.value;
+            var num = checkNum(value);
+            if (num) {
+                var div = addDiv(num);
+                if(box.children.length < 60){
+                    box.appendChild(div);
+                }else {
+                    alert('超过上限！')
+                }
+            }
+        }
+
+        function leftOut() {
+            alert(box.children[0].innerHTML);
+            box.removeChild(box.children[0]);
+        }
+
+        function rightOut() {
+            alert(box.lastElementChild.innerHTML);
+            box.removeChild(box.lastElementChild);
+        }
+        function sortBox (box) {
+            var arr = [],
+            len = box.children.length;
+            for(var i=0; i<len; i++){
+                var height = box.children[i].children[0].style.height || box.children[i].children[0].offsetHeight;
+                // 初始的box元素的height是在CSS中设置的 可以用offset获取
+                arr.push(parseInt(height));
+            }
+            arr.sort(function (a,b) {
+                return a - b ;
+            });
+            for(var j=0; j<len; j++){
+                var div = addDiv(arr[j]/2);
+                box.appendChild(div);
+                box.removeChild(box.firstElementChild);
+            }
+        }
+
+        // 点击事件绑定
+        function bindClick() {
+            for (var i = 0, len = btns.length; i < len; i++) {
+                btns[i].index = i;
+                btns[i].addEventListener('click', function () {
+                    if (this.index == 0) {
+                        // 点击左侧入
+                        leftIn();
+                        input.value = '';
+                    } else if (this.index == 1) {
+                        // 点击右侧入
+                        rightIn()
+                        input.value = '';
+                    } else if (this.index == 2) {
+                        // 点击左侧出
+                        leftOut()
+                    } else if (this.index == 3){
+                        // 点击右侧出
+                        rightOut()
+                    }else {
+                        sortBox (box)
+                    }
+                });
+            }
+        }
+
+        // 点击数字即删除
+        function clickDiv() {
+            var box = document.querySelector('.box');
+            box.addEventListener('click', function (e) {
+                if (event.target.nodeName.toLowerCase() == 'span')
+                    box.removeChild(event.target.parentNode);
+            })
+        }
+
+        bindClick();
+        clickDiv()
+    })()
+
+</script>

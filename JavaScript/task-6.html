@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务七：JavaScript和树（一）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            margin-top: 30px;
+        }
+        .box span {
+            display: inline-block;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: #e36569;
+            color: #fff;
+            margin: 0 2px;
+            padding: 0 5px;
+            float: left;
+            cursor: pointer;
+        }
+        #text {
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+<textarea name="" id="text" cols="30" rows="10" placeholder="允许一次批量输入多个内容，格式可以为数字、中文、英文等，可以通过用回车，逗号（全角半角均可），顿号，空格（全角半角、Tab等均可）等符号作为不同内容的间隔" >12, 11$$武 。。wyj</textarea>
+<button id="leftIn">左侧入</button>
+<button id="rightIn">右侧入</button>
+<button id="leftOut">左侧出</button>
+<button id="rightOut">右侧出</button>
+<input type="text" id="searchT">
+<button id="search">查询</button>
+<div class="box">
+    <span>10</span>
+    <span>3</span>
+    <span>7</span>
+    <span>12</span>
+</div>
+</body>
+</html>
+<script>
+    /**
+     * 基于任务四进行升级
+     * 将新元素输入框从input改为textarea
+     * 允许一次批量输入多个内容，格式可以为数字、中文、英文等，可以通过用回车，逗号（全角半角均可），顿号，空格（全角半角、Tab等均可）等符号作为不同内容的间隔
+     * 增加一个查询文本输入框，和一个查询按钮，当点击查询时，将查询词在各个元素内容中做模糊匹配，将匹配到的内容进行特殊标识，如文字颜色等。举例，内容中有abcd，查询词为ab或bc，则该内容需要标识
+     */
+    (function () {
+        var box = document.querySelector('.box');
+        var btns = document.querySelectorAll('button');
+        var input = document.querySelector('#searchT');
+        var text = document.querySelector('#text');
+
+
+        // 提取文本内容
+        function getText() {
+            var textStr = text.value;
+            var Reg = /[^\u4E00-\u9FA5A-Za-z0-9]+/g;
+            textStr = textStr.replace(Reg,',');
+            var arr = textStr.split(',');
+            return arr;
+        }
+
+        // 创建span
+        function addSpan(direction) {
+            var arr = getText();
+            for(var i=0, len=arr.length; i<len; i++){
+                var span = document.createElement('span');
+                span.innerHTML = arr[i];
+                if(direction == 'left'){
+                    box.insertBefore(span,box.children[0]);
+                }else {
+                    box.appendChild(span);
+                }
+            }
+        }
+        // 点击按钮事件函数
+        function leftIn() {
+            addSpan('left');
+        }
+        function rightIn() {
+            addSpan('right');
+        }
+        function leftOut() {
+            alert(box.children[0].innerHTML);
+            box.removeChild(box.children[0]);
+        }
+        function rightOut() {
+            alert(box.lastElementChild.innerHTML);
+            box.removeChild(box.lastElementChild);
+        }
+        // 查询
+        function search() {
+             var spans = document.querySelectorAll('span');
+            for(var i=0, len=spans.length; i<len; i++){
+                spans[i].style.backgroundColor = '#E36569';
+                //还原所有span的背景颜色
+            }
+
+             var str = input.value;
+             for(var j=0; j<len; j++){
+                 if(spans[j].innerHTML.indexOf(str) != -1){
+                     // 包含查询元素
+                     spans[j].style.backgroundColor = 'green';
+                 }
+             }
+        }
+
+        // 点击事件绑定
+        function bindClick() {
+            for(var i=0, len=btns.length; i<len; i++){
+                btns[i].index = i;
+                btns[i].addEventListener('click',function () {
+                    if(this.index == 0){
+                        // 点击左侧入
+                        leftIn();
+                    }else if(this.index == 1) {
+                        // 点击右侧入
+                        rightIn();
+                    }else if(this.index == 2) {
+                        // 点击左侧出
+                        leftOut();
+                    }else if(this.index == 3) {
+                        // 点击右侧出
+                        rightOut();
+                    }else {
+                        // 查询
+                        search();
+                    }
+                });
+            }
+        }
+        // 点击数字即删除
+        function clickSpan() {
+            var box = document.querySelector('.box');
+            box.addEventListener('click',function (e) {
+                if(event.target.nodeName.toLowerCase() == 'span')
+                    box.removeChild(event.target);
+            })
+        }
+        bindClick();
+        clickSpan()
+    })()
+
+</script>

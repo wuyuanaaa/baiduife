@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务八：JavaScript和树（二）</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            border: 1px solid #7f7f7f;
+            display: flex;
+        }
+        .clearfix::after,
+        .clearfix::before {
+            display: table;
+            content: '';
+        }
+        .clearfix::after {
+            clear: both;
+        }
+        .clearfix {
+            zoom: 1;
+        }
+        .a {
+            margin: 50px 50px;
+            width: calc(100% - 100px);
+            height: 150px;
+            align-items: stretch;
+        }
+        .a div {
+            margin: 5px 1px;
+        }
+        .b {
+            width: 40%;
+        }
+            .e {
+                width: 50%;
+            }
+                .e div {
+                    width: 25%;
+                }
+            .f {
+                width: 20%;
+            }
+            .g {
+                width: 30%;
+            }
+                .g div {
+                    width: 50%;
+                }
+
+        .c {
+            width: 40%;
+        }
+            .n {
+                width: 50%;
+            }
+                .n div {
+                    width: 33%;
+                }
+            .o {
+                width: 50%;
+            }
+                .s {
+                    width: 60%;
+                }
+                    .s div {
+                        width: 60%;
+                    }
+                .t {
+                    width: 40%;
+                }
+        .d {
+            width: 20%;
+        }
+        #btn1 {
+            margin-left: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="a">a
+    <div class="b">b
+        <div class="e">e
+            <div class="h">h</div>
+            <div class="i">i</div>
+            <div class="j">j</div>
+            <div class="k">k</div>
+        </div>
+        <div class="f">f</div>
+        <div class="g">g
+            <div class="l">l</div>
+            <div class="m">m</div>
+        </div>
+    </div>
+    <div class="c">c
+        <div class="n">n
+            <div class="p">p</div>
+            <div class="q">q</div>
+            <div class="r">r</div>
+        </div>
+        <div class="o">o
+            <div class="s">s
+                <div class="u">u</div>
+            </div>
+            <div class="t">t</div>
+        </div>
+    </div>
+    <div class="d">d</div>
+</div>
+<button id="btn1">先序遍历</button>
+<button id="btn2">后序遍历</button>
+<input type="text" id="searchId">
+<button id="search">查询</button>
+</body>
+</html>
+<script>
+    /**
+     * 基于任务七，参考示例图，将二叉树变成了多叉树，并且每一个节点中带有内容
+     * 提供一个按钮，显示开始遍历，点击后，以动画的形式呈现遍历的过程
+     * 当前被遍历到的节点做一个特殊显示（比如不同的颜色）
+     * 每隔一段时间（500ms，1s等时间自定）再遍历下一个节点
+     * 增加一个输入框及一个“查询”按钮，点击按钮时，开始在树中以动画形式查找节点内容和输入框中内容一致的节点，找到后以特殊样式显示该节点，找不到的话给出找不到的提示。查询过程中的展示过程和遍历过程保持一致
+     */
+    (function () {
+        var root = document.querySelector('.a');
+        var btn1 = document.querySelector('#btn1');
+        var searchId = document.querySelector('#searchId');
+        var search = document.querySelector('#search');
+        var inAnimation = false;
+        var arr = [];
+        var target = '';
+
+        // 前序遍历
+        function preOrder(node) {
+            if(!node){
+                return
+            }
+            arr.push(node);
+
+            if(node.children && node.children.length > 0){
+                for(var i=0, len=node.children.length; i<len; i++){
+                    preOrder(node.children[i]);
+                }
+            }
+        }
+        // 后序遍历
+        function postOrder(node) {
+            if(!node){
+                return
+            }
+            if(node.children && node.children.length > 0){
+                for(var i=0, len=node.children.length; i<len; i++){
+                    postOrder(node.children[i]);
+                }
+            }
+            arr.push(node);
+        }
+        // 动画
+        function animation(arr) {
+            if(inAnimation){
+                alert('正在遍历中');
+                return
+            }
+            inAnimation = true;
+            // 动画开始后按钮不可点击
+            btn1.disabled = true;
+            btn2.disabled = true;
+            search.disabled = true;
+            var i = 0,len = arr.length;
+            arr[i].style.backgroundColor = 'red';
+            var show = setInterval(function () {
+                arr[i].style.backgroundColor = '#fff';
+                i++;
+                if(i == len){
+                    clearInterval(show);
+                    inAnimation = false;
+                    // 动画结束，按钮恢复可点击
+                    btn1.disabled = false;
+                    btn2.disabled = false;
+                    search.disabled = false;
+                    return;
+                }
+                arr[i].style.backgroundColor = 'red';
+
+                // 查询元素匹配
+                if(target != '' && getName(arr[i]).indexOf(target) != -1){
+                    arr[i].style.color = 'red';
+                }else {
+                    arr[i].style.color = '#000';
+                }
+            },500)
+        }
+
+        // 获取当前元素的内容
+        function getName(node) {
+            var str = node.innerText;
+            str = str.replace(/[\n\r]/g,',');
+            var nameArr = str.split(',');
+            return nameArr[0];
+        }
+
+        // 查询函数
+        function find() {
+            var findStr = searchId.value;
+            target = findStr;
+            arr = [];
+            preOrder(root);
+            animation(arr);
+        }
+
+        btn1.onclick = function () {
+            // 先清空数组，防止上次留下的dom
+            arr = [];
+            preOrder(root);
+            animation(arr);
+        };
+        btn2.onclick = function () {
+            // 先清空数组，防止上次留下的dom
+            arr = [];
+            postOrder(root);
+            animation(arr);
+        };
+        search.onclick = function () {
+            find();
+        }
+
+    })()
+
+</script>

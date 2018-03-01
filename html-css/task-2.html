@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务二：零基础HTML及CSS编码（一）</title>
+    <style>
+        /*通用*/
+        blockquote,body,button,dd,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,hr,input,legend,li,ol,p,pre,td,textarea,th,ul{margin:0;padding:0}
+        body {
+            background-color: #dedede;
+            letter-spacing: 0.05em;
+            /*文字间距*/
+            font: normal 14px/26px '微软雅黑';
+        }
+        /*导航部分*/
+        .nav {
+            width: 100%;
+            height: 60px;
+            background-color: #333333;
+            margin-bottom: 20px;
+        }
+        .nav h1 {
+            display: inline-block;
+            line-height: 60px;
+            margin-left: 20px;
+        }
+        .nav ul {
+            float: right;
+        }
+        .nav ul li {
+            float: left;
+            margin-right: 20px;
+        }
+        .nav ul li a {
+            text-decoration: none;
+            color: #fff8eb;
+            font: 400 14px/60px '微软雅黑';
+        }
+        /*文章部分通用*/
+        .article {
+            margin: 0 20px 20px 20px;
+            border: 1px solid #b2b2b2;
+            background-color: #ffffff;
+            box-shadow: 2px 2px 0 #737373;
+            padding: 20px 20px;
+        }
+        .article h2 {
+            font: bold 20px/20px '微软雅黑';
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+        .article h3 {
+            font: bold 16px/20px '微软雅黑';
+            margin-bottom: 20px;
+            color: #696975;
+        }
+        .article h4 {
+            font: normal 14px/20px '微软雅黑';
+            margin-bottom: 20px;
+            color: #696975;
+        }
+        .article p {
+            font: normal 15px/26px '微软雅黑';
+        }
+        .article p.first {
+             text-indent: 2em;
+         }
+        .article ul {
+            list-style: none;
+        }
+        .article img {
+            margin: 20px 0;
+        }
+        .article ul li {
+            text-indent: 2em;
+            font: normal 15px/26px '微软雅黑';
+        }
+        .article .imglis {
+            border: 1px solid #cbcbcb;
+            width: 200px;
+            height: 194px;
+            padding: 10px;
+            box-sizing: border-box;
+            margin: 20px 40px;
+        }
+        .article .imglis img {
+            width: 180px;
+            margin: 10px 0;
+        }
+        .article .imglis p {
+            text-align: center;
+            text-indent: 0;
+        }
+        .article ol {
+            font: normal 15px/26px '微软雅黑';
+            margin-left: 40px;
+        }
+        .article table,th,td {
+            border: 1px solid #cccccc;
+
+        }
+        .article table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .article table th,td {
+            text-align: left;
+            padding-left: 5px;
+            font: normal 14px/26px '微软雅黑';
+        }
+        .article table th {
+            font-weight: bold;
+            background-color: #333333;
+            color: white;
+        }
+        .article table tr:nth-child(6) {
+            background-color: #cccccc;
+        }
+        .article table tr:nth-child(6) td {
+            font-weight: bold;
+        }
+        /*侧边栏*/
+        .sideBar h3 {
+            font: bold 15px/30px '微软雅黑';
+            color: #080005;
+            margin-bottom: 0;
+            text-indent: 1em;
+        }
+        .sideBar h3 span {
+            display: inline-block;
+            width: 4px;
+            height: 30px;
+            background-color: #cacaca;
+            float: left;
+        }
+        .sideBar form {
+            margin: 10px 0 0 0;
+            font: normal 14px/26px '微软雅黑';
+        }
+        .sideBar form label {
+            margin: 0 0 0 20%;
+            box-sizing: border-box;
+            float: left;
+            width: 150px;
+            height: 30px;
+            text-align: right;
+            padding-right: 10px;
+        }
+        .sideBar form .line {
+            margin: 10px 0;
+        }
+        .sideBar form .right {
+            margin-left: 150px;
+        }
+        .sideBar form .right p {
+            color: #b0b0b0;
+        }
+        .sideBar form .right input {
+            line-height: 22px;
+            padding-left: 5px;
+        }
+        .sideBar form .submit {
+            width: 100%;
+            background-color: #3355d0;
+            border: 0;
+            font: bold 16px/36px '微软雅黑';
+            color: white;
+            letter-spacing: 0.1em;
+            border-radius: 8px;
+        }
+        /*底部*/
+        .footer {
+            height: 80px;
+            background-color: #000000;
+            padding-top: 20px;
+            box-sizing: border-box;
+        }
+        .footer p {
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <h1>网站一级标题</h1>
+    <ul>
+        <li><a href="#">导航链接一</a></li>
+        <li><a href="#">导航链接二</a></li>
+        <li><a href="#">导航链接三</a></li>
+        <li><a href="#">导航链接四</a></li>
+    </ul>
+</div>
+<div class="article">
+    <h2>文章一级标题</h2>
+    <h3>文章二级标题</h3>
+    <h4>作者 <span>发表时间</span></h4>
+    <div class="content">
+        <p class="first">这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，换行了</p>
+        <p>这是个很长的段落，这是个很长的段落，<a href="http://ife.baidu.com">这里是一个链接到http://ife.baidu.com</a>，这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，</p>
+        <img src="../images/d1.jpg" alt="这是个图片">
+    </div>
+</div>
+
+<div class="article">
+    <h2>文章一级标题</h2>
+    <h3>文章二级标题</h3>
+    <h4>作者 <span>发表时间</span></h4>
+    <div class="content">
+        <p class="first">这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，</p>
+        <br>
+        <p>换行了</p>
+        <p>这是个很长的段落，这是个很长的段落，<a href="http://ife.baidu.com">这里是一个链接到http://ife.baidu.com</a>，这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，这是个很长的段落，</p>
+        <img src="../images/d1.jpg" alt="这是个图片">
+        <ul>
+            <li>列表项目一</li>
+            <li>列表项目二</li>
+            <li>列表项目三</li>
+        </ul>
+    </div>
+</div>
+
+<div class="article">
+    <h2>图片</h2>
+    <div class="imglis">
+        <p>好看的图片</p>
+        <img src="../images/d1.jpg" alt="这是个图片">
+    </div>
+
+    <div class="imglis">
+        <p>好看的图片</p>
+        <img src="../images/d1.jpg" alt="这是个图片">
+    </div>
+    <div class="imglis">
+        <p>好看的图片</p>
+        <img src="../images/d1.jpg" alt="这是个图片">
+    </div>
+
+    <div class="imglis">
+        <p>好看的图片</p>
+        <img src="../images/d1.jpg" alt="这是个图片">
+    </div>
+    <div class="imglis">
+        <p>好看的图片</p>
+        <img src="../images/d1.jpg" alt="这是个图片">
+    </div>
+    <div class="imglis">
+        <p>好看的图片</p>
+        <img src="../images/d1.jpg" alt="这是个图片">
+    </div>
+</div>
+
+<div class="article">
+    <h2>最后一篇文章一级标题</h2>
+    <h3>文章二级标题</h3>
+    <h4>作者 <span>发表时间</span></h4>
+    <div class="content">
+        <ol>
+            <li>排名1</li>
+            <li>排名2</li>
+            <li>排名3</li>
+        </ol>
+        <p>下面是一个表格</p>
+        <table>
+            <tr>
+                <th>表头</th>
+                <th>表头</th>
+                <th>表头</th>
+            </tr>
+            <tr>
+                <td>表格内容单元格</td>
+                <td>表格内容单元格</td>
+                <td><a href="#">操作</a></td>
+            </tr>
+            <tr>
+                <td>表格内容单元格</td>
+                <td>表格内容单元格</td>
+                <td><a href="#">操作</a></td>
+            </tr>
+            <tr>
+                <td>表格内容单元格</td>
+                <td>表格内容单元格</td>
+                <td><a href="#">操作</a></td>
+            </tr>
+            <tr>
+                <td>表格内容单元格</td>
+                <td>表格内容单元格</td>
+                <td><a href="#">操作</a></td>
+            </tr>
+            <tr>
+                <td>总计</td>
+                <td colspan="2">1000</td>
+                <!--colspan 水平合并   rowspan 垂直合并-->
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="sideBar article">
+    <h3><span></span>侧栏注册窗口标题</h3>
+    <form action="">
+        <div class="line">
+            <label for="email">请输入邮箱地址</label>
+            <div class="email right">
+                <input type="text" placeholder="这是个文本输入框" id="email">
+                <p>邮箱地址请按要求格式输入</p>
+            </div>
+        </div>
+        <div class="line">
+            <label>请输入密码</label>
+            <div class="right">
+                <input type="password" placeholder="这是个文本输入框">
+            </div>
+        </div>
+        <div class="line">
+            <label>请重复输入密码</label>
+            <div class="password right">
+                <input type="text" placeholder="这是个文本输入框">
+                <p>密码的格式要求</p>
+            </div>
+        </div>
+        <div class="line">
+            <label>性别</label>
+            <div class="sex right">
+                <input type="radio" name="xb" checked>男
+                <input type="radio" name="xb">女
+            </div>
+        </div>
+        <div class="line">
+            <label>城市</label>
+            <div class="right">
+                <select name="" id="">
+                    <option value="">北京</option>
+                    <option value="">上海</option>
+                    <option value="">武汉</option>
+                </select>
+            </div>
+        </div>
+        <div class="line">
+            <label for="">爱好</label>
+            <div class="right">
+                <input type="checkbox" name="ah">运动
+                <input type="checkbox" checked="checked" name="ah">艺术
+                <input type="checkbox" name="ah">科学
+            </div>
+        </div>
+        <div class="line">
+            <label for="">个人描述</label>
+            <div class="right">
+                <textarea name="" id="description" cols="30" rows="3" placeholder="这是一个多行输入框"></textarea>
+            </div>
+        </div>
+        <input type="submit" value="确认提交" class="submit">
+    </form>
+</div>
+<div class="footer">
+    <p>版权所有&nbsp;©&nbsp;</p>
+</div>
+</body>
+</html>

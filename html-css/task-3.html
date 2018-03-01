@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务三：三栏式布局</title>
+    <style>
+        blockquote,body,button,dd,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,hr,input,legend,li,ol,p,pre,td,textarea,th,ul{margin:0;padding:0}
+        .left {
+            float: left;
+            width: 200px;
+        }
+        body {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 20px;
+        }
+        .container {
+            padding: 20px;
+            background-color: #eee;
+            border: 1px solid #999;
+            position: relative;
+        }
+        .clearfix:before,.clearfix:after {
+            content:"";
+            display:table;
+        }
+        .clearfix:after{clear:both;}
+        .clearfix{
+            *zoom:1;/*IE/7/6*/
+        }
+        /*左边*/
+        .left {
+            box-sizing: border-box;
+            padding: 20px;
+            width: 200px;
+            float: left;
+            border: 1px solid #999;
+            margin-right: 20px;
+        }
+        .left .logo {
+            width: 80px;
+            height: 80px;
+            background: url(../images/d1.jpg) round top;
+            float: left;
+        }
+        .left h3 {
+            text-align: center;
+            font: 400 16px/20px '微软雅黑';
+        }
+        /*中间*/
+        .center {
+            padding: 20px;
+            border: 1px solid #999;
+            overflow: auto;
+        }
+        /*右边*/
+        .right {
+            padding: 20px;
+            float: right;
+            right: 20px;
+            top: 20px;
+            border: 1px solid #999;
+            margin-left: 20px;
+        }
+        .right .logoList {
+            width: 80px;
+            height: 80px;
+            background-color: red;
+        }
+        .right .logoList + div {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container clearfix">
+    <!--左边-->
+    <div class="left">
+        <div class="logo">
+
+        </div>
+        <h3>团队名称</h3>
+    </div>
+    <!--右边-->
+    <div class="right">
+        <div class="logoList">1</div>
+        <div class="logoList">2</div>
+        <div class="logoList">3</div>
+        <div class="logoList">4</div>
+    </div>
+    <!--中间-->
+    <div class="center">
+        百度前端技术学院的课程任务是由百度前端工程师专为对前端不同掌握程度的同学设计。我们尽力保证课程内容的质量以及学习难度的合理性，但即使如此，真正决定课程效果的，还是你的每一次思考和实践。
+
+        课程多数题目的解决方案都不是唯一的，这和我们在实际工作中的情况也是一致的。因此，我们的要求不仅仅是实现设计稿的效果，更是要多去思考不同的解决方案，评估不同方案的优劣，然后使用在该场景下最优雅的方式去实现。那些最终没有被我们采纳的方案，同样也可以帮助我们学到很多知识。所以，我们列出的参考资料未必是实现需求所必须的。有的时候，实现题目的要求很简单，甚至参考资料里就有，但是背后的思考和亲手去实践却是任务最关键的一部分。在学习这些资料时，要多思考，多提问，多质疑。相信通过和小伙伴们的交流，能让你的学习事半功倍。
+        任务目标
+
+        掌握HTML/CSS布局的概念
+        掌握盒模型的概念
+        掌握position与float的概念以及在布局时的用法
+
+        任务描述
+
+        使用 HTML 与 CSS 按照 示例图（点击查看） 实现三栏式布局。
+        左右两栏宽度固定，中间一栏根据父元素宽度填充满，最外面的框应理解为浏览器。背景色为 #eee 区域的高度取决于三个子元素中最高的高度。
+
+        任务注意事项
+
+        尝试 position 和 float 的效果，思考它们的异同和应用场景。
+        注意测试不同情况，尤其是极端情况下的效果。
+        图片和文字内容请自行替换，尽可能体现团队的特色。
+        调节浏览器宽度，固定宽度和自适应宽度的效果始终符合预期。
+        改变中间一栏的内容长度，以确保在中间一栏较高和右边一栏较高时，父元素的高度始终为子元素中最高的高度。
+        其他效果图中给出的标识均被正确地实现。
+
+    </div>
+
+</div>
+</body>
+</html>

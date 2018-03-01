@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务一：表单（一）单个表单项的检验</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #212121;
+        }
+        form {
+            width: 400px;
+            height: 300px;
+            background-color: #fff;
+            margin: 100px auto;
+            padding: 50px 50px;
+        }
+        form label {
+            display: inline-block;
+            width: 100px;
+            text-align: center;
+            font: bold 16px/40px '';
+        }
+        .input {
+            width: 300px;
+            float: right;
+        }
+        #input1 {
+            height: 40px;
+            width: 220px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: 2px solid #ccc;
+            padding-left: 5px;
+        }
+        #btn1 {
+            box-sizing: border-box;
+            height: 40px;
+            margin-top: -1px;
+            background-color: #3079b9;
+            color: white;
+            font: bold 16px/40px '';
+            width: 60px;
+            border: 0;
+            vertical-align: middle;
+            border-radius: 5px;
+        }
+        .input p {
+            font: bold 14px/30px '';
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+<form action="">
+    <label for="input1">名称</label>
+    <div class="input">
+        <input type="text" id="input1">
+        <input type="button" value="验证" id="btn1">
+        <p>必填，长度为4~16个字符</p>
+    </div>
+
+</form>
+</body>
+</html>
+<script>
+    /*
+    *要求点击验证按钮后，对输入框中内容进行格式校验，并在其下方显示校验结果
+     校验规则：
+
+     1.字符数为4~16位
+     2.每个英文字母、数字、英文符号长度为1
+     3.每个汉字，中文符号长度为2
+     */
+    (function () {
+        //获取dom
+        var btn1 = document.querySelector('#btn1');
+        var content = document.querySelector('#input1');
+        var warn = document.querySelector('p');
+/*
+        btn1.onclick = function () {
+            var str = content.value;
+            var count = 0;
+            for(var i=0, len =str.length; i<len; i++){
+                console.log(str.charCodeAt(i));
+                if(str.charCodeAt(i) > 255){
+                    count+= 2;
+                }else {
+                    count++;
+                }
+            }
+            if(count == 0){
+                warn.innerHTML = '姓名不能为空';
+            }else if(count < 4){
+                warn.innerHTML = '太短了！长度需在4~16字符';
+            }else if(count <= 16){
+                warn.innerHTML = '名称格式正确';
+            }else {
+                warn.innerHTML = '太长了！长度需在4~16字符';
+            }
+        }
+        */
+
+        //正则规则
+        var RegYchinese = /[\u4E00-\u9FA5]/g; //汉字
+        var RegNchinese = /[^\u4E00-\u9FA5\uf900-\ufa2d]/g; //非中文
+        var Regtrim = /^\s+|\s+$/g;  //两端的空白字符
+
+        btn1.addEventListener('click',function () {
+            var str = content.value;
+            //计算长度
+            var length = str.replace(Regtrim,'').replace(RegYchinese,'AB').replace(RegNchinese,'A').length;
+
+            if(length == 0){
+                content.style.borderColor = '#DC0210';
+                warn.style.color = '#DC0210';
+                warn.innerHTML = '姓名不能为空';
+            }else if(length >= 4 && length <= 16){
+                content.style.borderColor = '#ccc';
+                warn.style.color = '#999';
+                warn.innerHTML = '姓名格式正确';
+            }else {
+                warn.innerHTML = '姓名格式错误，长度需在4~16字符';
+                content.style.borderColor = '#6fc15e';
+                warn.style.color = '#6fc15e';
+            }
+        })
+
+    })()
+</script>

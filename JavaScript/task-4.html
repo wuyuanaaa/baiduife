@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务四：基础JavaScript练习（一）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            margin-top: 30px;
+        }
+        .box span {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: #e36569;
+            color: #fff;
+            margin: 0 2px;
+            float: left;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<input type="text" placeholder="请输入1-2位数字" value="">
+<button id="leftIn">左侧入</button>
+<button id="rightIn">右侧入</button>
+<button id="leftOut">左侧出</button>
+<button id="rightOut">右侧出</button>
+<div class="box">
+    <span>10</span>
+    <span>3</span>
+    <span>7</span>
+    <span>12</span>
+</div>
+<br>
+<br>
+<p>点击格子可以删除</p>
+</body>
+</html>
+<script>
+    /**
+     * 模拟一个队列，队列的每个元素是一个数字，初始队列为空
+     * 有一个input输入框，以及4个操作按钮
+     *      点击"左侧入"，将input中输入的数字从左侧插入队列中；
+     *      点击"右侧入"，将input中输入的数字从右侧插入队列中；
+     *      点击"左侧出"，读取并删除队列左侧第一个元素，并弹窗显示元素中数值；
+     *      点击"右侧出"，读取并删除队列又侧第一个元素，并弹窗显示元素中数值；
+     * 点击队列中任何一个元素，则该元素会被从队列中删除
+     */
+    (function () {
+        var box = document.querySelector('.box');
+        var btns = document.querySelectorAll('button');
+        var input = document.querySelector('input');
+        // 效验数字合法性
+        function checkNum(num) {
+            if(!num){
+                alert('输入为空')
+            }else if(!isNaN(num)){
+                return num;
+            }else {
+                alert('输入的不是数字');
+                input.value = '';
+            }
+        }
+        // 创建span
+        function addSpan(num) {
+            var span = document.createElement('span');
+            span.innerHTML = num;
+            return span;
+        }
+
+        // 点击按钮事件函数
+        function leftIn() {
+            var value = input.value;
+            var num = checkNum(value);
+            if(num){
+                var span = addSpan(num);
+                box.insertBefore(span,box.children[0]);
+            }
+        }
+        function rightIn() {
+            var value = input.value;
+            var num = checkNum(value);
+            if(num){
+                var span = addSpan(num);
+                box.appendChild(span);
+            }
+        }
+        function leftOut() {
+            alert(box.children[0].innerHTML);
+            box.removeChild(box.children[0]);
+        }
+        function rightOut() {
+            alert(box.lastElementChild.innerHTML);
+            box.removeChild(box.lastElementChild);
+        }
+
+        // 点击事件绑定
+        function bindClick() {
+            for(var i=0, len=btns.length; i<len; i++){
+                btns[i].index = i;
+                btns[i].addEventListener('click',function () {
+                    if(this.index == 0){
+                        // 点击左侧入
+                        leftIn()
+                    }else if(this.index == 1) {
+                        // 点击右侧入
+                        rightIn()
+                    }else if(this.index == 2) {
+                        // 点击左侧出
+                        leftOut()
+                    }else {
+                        // 点击右侧出
+                        rightOut()
+                    }
+                });
+            }
+        }
+        // 点击数字即删除
+        function clickSpan() {
+            var box = document.querySelector('.box');
+            box.addEventListener('click',function (e) {
+                if(event.target.nodeName.toLowerCase() == 'span')
+                    box.removeChild(event.target);
+            })
+        }
+        bindClick();
+        clickSpan()
+    })()
+
+</script>
