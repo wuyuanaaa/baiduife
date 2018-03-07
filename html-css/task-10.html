@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务十：Flexbox 布局练习</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            padding: 20px;
+            display: flex;
+        }
+        div[class^='box'] {
+            width: 150px;
+            border: 1px solid red;
+        }
+        .box1 {
+            height: 120px;
+        }
+        .box2 {
+            height: 100px;
+        }
+        .box3 {
+            height: 40px;
+        }
+        div.box4 {
+            height: 200px;
+            border-color: blue;
+        }
+        @media screen and (min-width: 640px){
+            body {
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+        @media screen and (max-width: 640px){
+            body {
+                align-items: flex-start;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+            .box1 {
+                order: 2;
+            }
+            .box2 {
+                order: 3;;
+            }
+            .box3 {
+                order: 4;
+            }
+            .box4 {
+                order: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+<div class="box2"></div>
+<div class="box3"></div>
+<div class="box4"></div>
+</body>
+</html>

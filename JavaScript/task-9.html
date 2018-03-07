@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>任务八：JavaScript和树（二）</title>
+    <title>任务九：JavaScript和树（三）</title>
     <style>
         *{
             margin: 0;
@@ -11,6 +11,7 @@
         div {
             border: 1px solid #7f7f7f;
             display: flex;
+            background-color: #fff;
         }
         .a {
             margin: 50px 50px;
@@ -61,24 +62,30 @@
 <button id="btn2">后序遍历</button>
 <input type="text" id="searchId">
 <button id="search">查询</button>
+<button id="del">删除</button>
+<input type="text" id="addText">
+<button id="add">添加</button>
 </body>
 </html>
 <script>
     /**
-     * 基于任务七，参考示例图，将二叉树变成了多叉树，并且每一个节点中带有内容
-     * 提供一个按钮，显示开始遍历，点击后，以动画的形式呈现遍历的过程
-     * 当前被遍历到的节点做一个特殊显示（比如不同的颜色）
-     * 每隔一段时间（500ms，1s等时间自定）再遍历下一个节点
-     * 增加一个输入框及一个“查询”按钮，点击按钮时，开始在树中以动画形式查找节点内容和输入框中内容一致的节点，找到后以特殊样式显示该节点，找不到的话给出找不到的提示。查询过程中的展示过程和遍历过程保持一致
+     * 基于任务八，添加节点的选择、增加与删除的功能
+     * 点击某个节点元素，则该节点元素呈现一个特殊被选中的样式
+     * 增加一个删除按钮，当选中某个节点元素后，点击删除按钮，则将该节点及其所有子节点删除掉
+     * 增加一个输入框及一个“添加”按钮当选中某个节点元素后，点击增加按钮，则在该节点下增加一个子节点，节点内容为输入框中内容，插入在其子节点的最后一个位置
      */
     (function () {
         var root = document.querySelector('.a');
         var btn1 = document.querySelector('#btn1');
         var searchId = document.querySelector('#searchId');
         var search = document.querySelector('#search');
+        var del = document.querySelector('#del');
+        var addText = document.querySelector('#addText');
+        var add = document.querySelector('#add');
         var inAnimation = false;
         var arr = [];
         var target = '';
+        var clickDoms = [];
 
         // 前序遍历
         function preOrder(node) {
@@ -153,10 +160,68 @@
         function find() {
             var findStr = searchId.value;
             target = findStr;
+            // 先清空数组，防止上次留下的dom
             arr = [];
             preOrder(root);
             animation(arr);
         }
+
+        // 点击dom选中事件（颜色变化，增加data-current属性）
+        function clickDom() {
+            root.addEventListener('click',function (event) {
+                var event = event || window.event;
+                // 获取被点击的dom元素
+                var dom = event.target ? event.target : event.srcElement;
+                // 再次点击删除选中状态
+                if(dom.getAttribute('data-current') == 'on')
+                {
+                    dom.style.backgroundColor = '#fff';
+                    dom.setAttribute('data-current',' ');
+                }else {
+                    dom.style.backgroundColor = 'gold';
+                    dom.setAttribute('data-current','on');
+                }
+            });
+        }
+        clickDom();
+
+        // 获取选中的dom集合
+        function getClickDoms() {
+            // 先清空数组，防止上次留下的dom
+            clickDoms = [];
+            arr = [];
+            preOrder(root);
+            for(var i=0, len=arr.length; i<len; i++){
+                if(arr[i].getAttribute('data-current') == 'on')
+                // 获取在选中状态的dom
+                {
+                    clickDoms.push(arr[i])
+                }
+            }
+        }
+
+        // 删除节点
+        del.onclick = function () {
+            getClickDoms();
+            for(var i=0, len=clickDoms.length; i<len; i++){
+                if(clickDoms[i] != undefined){
+                    clickDoms[i].parentNode.removeChild(clickDoms[i]);
+                }
+            }
+        };
+
+        // 添加节点
+        add.onclick = function () {
+            var name = addText.value;
+            var dom = [];
+            getClickDoms();
+            for(var i=0, len=clickDoms.length; i<len; i++){
+                dom[i] = document.createElement('div');
+                dom[i].innerHTML = name;
+                clickDoms[i].appendChild(dom[i]);
+            }
+
+        };
 
         btn1.onclick = function () {
             // 先清空数组，防止上次留下的dom

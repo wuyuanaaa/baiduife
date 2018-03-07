@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务九：使用HTML/CSS实现一个复杂页面</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<!--头部部分-->
+<div id="top">
+    <div class="container">
+        <a href="#"><i id="logo"></i></a>
+        <div class="top-r">
+            <input type="text">
+            <i id="search"></i>
+            <i id="login"></i>
+            <a href="#">登录</a>
+        </div>
+    </div>
+</div>
+
+<!--内容部分-->
+<div class="container">
+    <!--左侧栏-->
+    <div id="left" class="clearfix">
+        <div class="info-top clearfix">
+            <div class="head">
+                <a href="#"></a>
+            </div>
+            <p>ABC123</p>
+        </div>
+        <div class="info-bom clearfix">
+            <div class="collect">
+                <p>110</p>
+                <p>收藏</p>
+            </div>
+            <div class="fans">
+                <p>313</p>
+                <p>粉丝</p>
+            </div>
+        </div>
+
+        <div id="left-tab">
+            <ul class="mainTab">
+                <li class="active"><a href="#"><i class="ico-1"></i>个人报表</a>
+                    <ul class="secondTab">
+                        <li><a href="#"><i class="ico-5"></i>文件夹一</a></li>
+                        <li class="active"><a href="#"><i class="ico-5"></i>文件夹二</a>
+                            <ul class="thirdTab">
+                                <li class="active"><a href="#"><i class="ico-6"></i>文档1</a></li>
+                                <li><a href="#"><i class="ico-6"></i>文档2</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#"><i class="ico-5"></i>文件夹三</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><i class="ico-2"></i>个人收藏</a></li>
+                <li><a href="#"><i class="ico-3"></i>我的分享</a></li>
+                <li><a href="#"><i class="ico-2"></i>图库</a></li>
+                <li><a href="#"><i class="ico-2"></i>成长记录</a></li>
+                <li><a href="#"><i class="ico-4"></i>账户信息</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--文档内容-->
+    <div id="doc" class="clearfix">
+        <!--文档顶部-->
+        <div class="doc-top clearfix">
+            <p><a href="#">C站</a><a href="#">个人报表</a><a href="#">文件一</a><a href="#">文档一</a></p>
+        </div>
+        <!--文档查询-->
+        <div class="doc-search clearfix">
+            <div class="searchProject clearfix search1">
+                <div class="project clearfix">
+                    <span>查询项</span>
+                    <div class="select">
+                        <span>第一项</span>
+                        <i class="ico-down"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="searchProject clearfix" id="search2">
+                <div class="project clearfix">
+                    <span>买方</span>
+                    <div class="select">
+                        <span>小A</span>
+                        <i class="ico-down"></i>
+                    </div>
+                </div>
+                <div class="project clearfix">
+                    <span>卖方</span>
+                    <div class="select">
+                        <span>小C</span>
+                        <i class="ico-down"></i>
+                    </div>
+                </div>
+                <i id="change"></i>
+            </div>
+            <div class="searchProject clearfix" id="search3">
+                <div class="project clearfix">
+                    <span>日期</span>
+                    <div class="select data">
+                        <span>2016-04-01</span>
+                    </div>
+                </div>
+                <div class="project clearfix">
+                    <span>总耗时</span>
+                    <div class="select times">
+                        <span>8天</span>
+                        <i class="ico-down"></i>
+                    </div>
+                </div>
+                <div class="project clearfix">
+                    <span>人数</span>
+                    <div class="select pnum">
+                        <span>10人</span>
+                        <i class="ico-down"></i>
+                    </div>
+                </div>
+                <div class="project clearfix">
+                    <span>成交项</span>
+                    <div class="select cnum">
+                        <span>10项</span>
+                        <i class="ico-down"></i>
+                    </div>
+                </div>
+            </div>
+            <button id="searchBtn">搜索</button>
+        </div>
+        <!--时间查询-->
+        <div class="doc-time clearfix">
+            <div class="time-left"><</div>
+            <ul class="time-list">
+                <li class="active">
+                    <p>10:00 am</p>
+                    <p><i class="ico-rmb"></i>&nbsp;&nbsp;1200</p>
+                </li>
+                <li>
+                    <p>11:00 am</p>
+                    <p><i class="ico-rmb"></i>&nbsp;&nbsp;1300</p>
+                </li>
+                <li>
+                    <p>12:00 am</p>
+                    <p><i class="ico-rmb"></i>&nbsp;&nbsp;1200</p>
+                </li>
+                <li>
+                    <p>01:00 pm</p>
+                    <p><i class="ico-rmb"></i>&nbsp;&nbsp;1400</p>
+                </li>
+                <li>
+                    <p>02:00 pm</p>
+                    <p><i class="ico-rmb"></i>&nbsp;&nbsp;1500</p>
+                </li>
+                <li>
+                    <p>03:00 pm</p>
+                    <p><i class="ico-rmb"></i>&nbsp;&nbsp;1800</p>
+                </li>
+            </ul>
+            <div class="time-right">></div>
+            <div class="time-history">
+                <i class="ico-data"></i>
+                <span>历史查询</span>
+            </div>
+        </div>
+        <!--统计-->
+        <div class="doc-statistics clearfix">
+            <p>2016年4月份统计</p>
+            <ul class="statistics-list">
+                <li>
+                    <p>133311</p>
+                    <p>成交量</p>
+                    <div class="img"></div>
+                </li>
+                <li>
+                    <p>133311</p>
+                    <p>成交量</p>
+                    <div class="img"></div>
+                </li>
+                <li>
+                    <p>133311</p>
+                    <p>成交量</p>
+                    <div class="img"></div>
+                </li>
+                <li>
+                    <p>133311</p>
+                    <p>成交量</p>
+                    <div class="img"></div>
+                </li>
+            </ul>
+        </div>
+        <!--第一组项目左-->
+        <div class="doc-card card1 clearfix">
+            <h4>第一组项目</h4>
+            <div class="card1-tab">
+                <ul class="card1-tab-list clearfix">
+                    <li class="active">项目一</li>
+                    <li>项目一</li>
+                    <li>项目一</li>
+                    <li>项目一</li>
+                    <li>项目一</li>
+                </ul>
+                <div class="card-tab-content">
+                    <table>
+                        <tr>
+                            <td class="active">购买材料一</td>
+                            <td>购买材料一</td>
+                            <td>购买材料一</td>
+                            <td>购买材料一</td>
+                        </tr>
+                        <tr>
+                            <td>购买材料二</td>
+                            <td>购买材料二</td>
+                            <td>购买材料二</td>
+                            <td>购买材料二</td>
+                        </tr>
+                        <tr>
+                            <td>购买材料四</td>
+                            <td>购买材料四</td>
+                            <td>购买材料四</td>
+                            <td>购买材料四</td>
+                        </tr>
+                        <tr>
+                            <td>购买材料六</td>
+                            <td>购买材料六</td>
+                            <td>购买材料六</td>
+                            <td>购买材料六</td>
+                        </tr>
+                        <tr>
+                            <td>购买材料十三</td>
+                            <td>购买材料十三</td>
+                            <td>购买材料十三</td>
+                            <td>购买材料十三</td>
+                        </tr>
+                        <tr>
+                            <td>购买材料二十</td>
+                            <td>购买材料二十</td>
+                            <td>购买材料二十</td>
+                            <td>购买材料二十</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--第一组项目右-->
+        <div class="doc-card card2 clearfix">
+            <h4>第一组项目</h4>
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <h5>标题</h5>
+                        <p>项目报表3</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h5>价格</h5>
+                        <p>￥158</p>
+                    </td>
+                    <td>
+                        <h5>负责人</h5>
+                        <p>小A</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <h5>详细描述</h5>
+                        <p>该项目目前负责人是......</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <h5><i class="ico-gou"></i>&nbsp;&nbsp;遵守保密协议</h5>
+                        <button id="card2-btn">搜索</button>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <!--日历-->
+        <div class="doc-card card3 clearfix">
+            <h4>日历</h4>
+            <div class="card3-tab">
+                <ul class="card3-tab-list clearfix">
+                    <li><p>2016年</p><i class="ico-down2"></i></li>
+                    <li><p>4月</p><i class="ico-down2"></i></li>
+                    <li><p>标注日期</p><i class="ico-down2"></i></li>
+                    <li><p>返回今天</p></li>
+                </ul>
+            </div>
+            <span class="line"></span>
+            <table>
+                <tr>
+                    <th>一</th>
+                    <th>二</th>
+                    <th>三</th>
+                    <th>四</th>
+                    <th>五</th>
+                    <th>六</th>
+                    <th>七</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <p>1</p>
+                        <span>愚人节</span>
+                    </td>
+                    <td>
+                        <p>2</p>
+                        <span>廿五</span>
+                    </td>
+                    <td>
+                        <p>3</p>
+                        <span>廿六</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>4</p>
+                        <span>廿七</span>
+                    </td>
+                    <td>
+                        <p>5</p>
+                        <span>清明</span>
+                    </td>
+                    <td>
+                        <p>6</p>
+                        <span>廿九</span>
+                    </td>
+                    <td>
+                        <p>7</p>
+                        <span>三月</span>
+                    </td>
+                    <td>
+                        <p>8</p>
+                        <span>初二</span>
+                    </td>
+                    <td>
+                        <p>9</p>
+                        <span>初三</span>
+                    </td>
+                    <td>
+                        <p>10</p>
+                        <span>初四</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>11</p>
+                        <span>初五</span>
+                    </td>
+                    <td>
+                        <p>12</p>
+                        <span>初六</span>
+                    </td>
+                    <td>
+                        <p>13</p>
+                        <span>初七</span>
+                    </td>
+                    <td>
+                        <p>14</p>
+                        <span>初八</span>
+                    </td>
+                    <td>
+                        <p>15</p>
+                        <span>初九</span>
+                    </td>
+                    <td>
+                        <p>16</p>
+                        <span>初十</span>
+                    </td>
+                    <td>
+                        <p>17</p>
+                        <span>十一</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>18</p>
+                        <span>十二</span>
+                    </td>
+                    <td>
+                        <p>19</p>
+                        <span>十三</span>
+                    </td>
+                    <td>
+                        <p>20</p>
+                        <span>十四</span>
+                    </td>
+                    <td>
+                        <p>21</p>
+                        <span>十五</span>
+                    </td>
+                    <td>
+                        <p>22</p>
+                        <span>十六</span>
+                    </td>
+                    <td>
+                        <p>23</p>
+                        <span>十七</span>
+                    </td>
+                    <td>
+                        <p>24</p>
+                        <span>十八</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>25</p>
+                        <span>十九</span>
+                    </td>
+                    <td>
+                        <p>26</p>
+                        <span>廿十</span>
+                    </td>
+                    <td>
+                        <p>27</p>
+                        <span>廿一</span>
+                    </td>
+                    <td>
+                        <p>28</p>
+                        <span>廿二</span>
+                    </td>
+                    <td>
+                        <p>29</p>
+                        <span>廿三</span>
+                    </td>
+                    <td>
+                        <p>30</p>
+                        <span>廿四</span>
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+        <!--汽车行业品牌榜-->
+        <div class="doc-card card4 clearfix">
+            <h4>汽车行业品牌榜</h4>
+            <table>
+                <tr>
+                    <th>排名</th>
+                    <th>品牌</th>
+                    <th>搜索指数</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>大众</td>
+                    <td>48912001
+                        <div class="bar">
+                            <div class="bar-in"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>丰田</td>
+                    <td>29307333
+                        <div class="bar">
+                            <div class="bar-in"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>奥迪</td>
+                    <td>23139070
+                        <div class="bar">
+                            <div class="bar-in"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>本田</td>
+                    <td>22885564
+                        <div class="bar">
+                            <div class="bar-in"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>福特</td>
+                    <td>22151150
+                        <div class="bar">
+                            <div class="bar-in"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>宝马</td>
+                    <td>21005452
+                        <div class="bar">
+                            <div class="bar-in"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>现代</td>
+                    <td>20457856
+                        <div class="bar">
+                            <div class="bar-in"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>起亚</td>
+                    <td>19851452
+                        <div class="bar">
+                            <div class="bar-in"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>奔驰</td>
+                    <td>18554424
+                        <div class="bar">
+                            <div class="bar-in"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>别克</td>
+                    <td>19245862
+                        <div class="bar">
+                            <div class="bar-in"></div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+</html>
