@@ -1,0 +1,348 @@
+/**
+笔记
+1、没有使用rem来适配，做完才想起来
+2、伸缩布局用的不熟练，很多地方可以用没有用（比如垂直方向的，目前用的是定位，不方便）
+3、图标可以用字体符号，不过没时间做这些
+ */
+/*通用属性*/
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+
+    -webkit-tap-highlight-color: transparent;
+
+    -webkit-box-sizing: border-box;
+}
+body {
+    font-size: 14px;
+    font-family: "微软雅黑","sans-serif";
+    color: #000;
+    background-color: #f6f6f6;
+}
+.clearfix::before,
+.clearfix::after {
+    display: table;
+    content: '';
+}
+.clearfix::after {
+    clear: both;
+}
+.clearfix {
+    zoom: 1;
+}
+img {
+    vertical-align: top;
+}
+a {
+    text-decoration: none;
+    color: #242424;
+}
+ul,
+ol {
+    list-style: none;
+}
+.box {
+    max-width: 640px;
+    min-width: 300px;
+    margin: 0 auto;
+
+}
+
+/*头部标题栏*/
+#header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+}
+#header .headerBox {
+    position: relative;
+    margin: 0 auto;
+    width: 640px;
+    height: 40px;
+    background-color: #93d6dc;
+}
+#header .headerBox h2 {
+    font-size: 16px;
+    color: #fff;
+    line-height: 40px;
+    text-align: center;
+    letter-spacing: .1em;
+}
+#header .headerBack {
+    position: absolute;
+    left: 10px;
+    top: 0;
+    line-height: 40px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+    padding-left: 20px;
+}
+#header .ico-back {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    background: url("../images/sprites.png") no-repeat -20px 0;
+    background-size: 200px 200px;
+    display: inline-block;
+    width: 15px;
+    height: 20px;
+}
+
+/*导航栏*/
+#nav {
+    width: 100%;
+    height: 40px;
+    margin-top: 40px;
+    background-color: #fff;
+}
+#nav>ul {
+    width: 100%;
+}
+#nav>ul>li {
+    width: 20%;
+    float: left;
+    line-height: 38px;
+    text-align: center;
+    font-size: 14px;
+    border-bottom: 2px solid transparent;
+}
+#nav>ul>li.active {
+    border-color: #92d5db;
+}
+
+/*轮播区域*/
+#banner {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+#banner>ul {
+    width: 500%;
+}
+#banner>ul>li {
+    width: 20%;
+    float: left;
+}
+#banner>ul>li img {
+    width: 100%;
+}
+#banner>ol {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    margin-left: -50px;
+    width: 100px;
+    display: flex;
+    justify-content: space-around;
+}
+#banner>ol>li {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    float: left;
+    background-color: #fdfffb;
+    text-align: center;
+    border-radius: 50%;
+}
+
+/*标签栏*/
+#tab {
+    padding-top: 10px;
+    background-color: #fff;
+    width: 100%;
+}
+#tab>ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+#tab>ul>li {
+    position: relative;
+    float: left;
+    width: 16%;
+    height: 100px;
+}
+#tab li a {
+    position: absolute;
+    left: 50%;
+    margin-left: -25px;
+    display: inline-block;
+    width: 50px;
+}
+#tab li i {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-color: #06c7d6;
+    border-radius: 50%;
+}
+#tab li p {
+    margin-top: 10px;
+    text-align: center;
+}
+
+/*分栏*/
+#section1 {
+    width: 100%;
+    margin: 0 auto;
+    background-color: #fff;
+}
+.section1-box {
+    border-top: 1px solid #ccc;
+    width: 92%;
+    margin: 15px auto;
+}
+#section1 ul {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+#section1 ul>li {
+    float: left;
+    width: 33%;
+}
+#section1 ul>li+li {
+    border-left: 1px solid #ccc;;
+}
+#section1 li>a {
+    width: 100%;
+}
+#section1 li img {
+    width: 80%;
+    margin: 0 10%;
+}
+#section1 h3,
+#section1 p {
+    text-align: center;
+    margin-top: 5px;
+}
+
+/*模块一*/
+.section {
+    width: 100%;
+    background-color: #fff;
+    margin-top: 15px;
+}
+.section .sectionTop {
+    width: 92%;
+    margin: 0 auto;
+    border-bottom:  1px solid #ccc;
+}
+.section .sectionTop h3 {
+    font-size: 16px;
+    line-height: 40px;
+}
+.section .sectionContent {
+    margin: 10px auto;
+    width: 92%;
+}
+.sectionContent img {
+    width: 120px;
+    float: left;
+    margin-bottom: 10px;
+}
+.sectionContent .text {
+    width: calc(100% - 120px);
+    margin-left: 120px;
+}
+.text>ul {
+    width: 100%;
+}
+.text>ul>li {
+    display: inline-block;
+    width: calc((100% - 20px)/2);
+    height: 40px;
+    float: left;
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    line-height: 40px;
+    text-align: center;
+}
+
+/*文章部分*/
+#section4 {
+    width: 100%;
+    background-color: #fff;
+    margin-top: 15px;
+}
+#section4 .article {
+    position: relative;
+    width: 92%;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+#section4 .article+.article {
+    border-top: 1px solid #ccc;
+}
+.onePic img {
+    width: 30%;
+    float: left;
+}
+.onePic h4,
+.onePic p{
+    width: calc(70% - 10px);
+    float: left;
+    margin-left: 10px;
+}
+.article h4 {
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+.article p {
+    font-size: 12px;
+}
+.onePic p {
+    position: absolute;
+    bottom: 10px;
+    left: 30%;
+}
+.morePic .imgList {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.imgList>div {
+    width: 33%;
+}
+.list img {
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

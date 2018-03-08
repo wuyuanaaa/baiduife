@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0"/>
+    <title>任务十一：移动Web页面布局实践</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="box">
+    <!--头部标题-->
+    <header id="header">
+        <div class="headerBox">
+            <h2>有什么吃什么</h2>
+            <a href="#" class="headerBack"><span class="ico-back"></span>返回</a>
+        </div>
+    </header>
+    <!--/头部标题-->
+
+    <!--导航-->
+    <nav id="nav">
+        <ul>
+            <li>导航</li>
+            <li class="active">导航</li>
+            <li>导航</li>
+            <li>导航</li>
+            <li>导航</li>
+        </ul>
+    </nav>
+    <!--/导航-->
+
+    <!--banner-->
+    <section id="banner">
+        <ul>
+            <li><a href="#"><img src="images/c1.jpg" alt="图片1"></a></li>
+            <li><a href="#"><img src="images/c2.jpg" alt="图片2"></a></li>
+            <li><a href="#"><img src="images/c3.jpg" alt="图片3"></a></li>
+            <li><a href="#"><img src="images/c4.jpg" alt="图片4"></a></li>
+            <li><a href="#"><img src="images/c1.jpg" alt="图片1"></a></li>
+        </ul>
+        <ol>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ol>
+    </section>
+    <!--/banner-->
+
+    <!--标签栏-->
+    <section id="tab">
+        <ul>
+            <li><a href="#">
+                <i></i>
+                <p>标签</p>
+            </a></li>
+            <li><a href="#">
+                <i></i>
+                <p>标签</p>
+            </a></li>
+            <li><a href="#">
+                <i></i>
+                <p>标签</p>
+            </a></li>
+            <li><a href="#">
+                <i></i>
+                <p>标签</p>
+            </a></li>
+            <li><a href="#">
+                <i></i>
+                <p>标签</p>
+            </a></li>
+        </ul>
+    </section>
+    <!--/标签栏-->
+
+    <!--分栏-->
+    <section id="section1" class="clearfix">
+        <div class="section1-box clearfix">
+            <ul class="clearfix">
+                <li>
+                    <a href="#">
+                        <img src="images/c2.jpg" alt="分栏图片">
+                        <h3>分栏一</h3>
+                        <p>分栏小标题</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/c3.jpg" alt="分栏图片">
+                        <h3>分栏二</h3>
+                        <p>分栏小标题</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/c4.jpg" alt="分栏图片">
+                        <h3>分栏三</h3>
+                        <p>分栏小标题</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <!--/分栏-->
+
+    <!--模块一-->
+    <section id="section2" class="section clearfix">
+        <div class="sectionTop">
+            <h3>模块一</h3>
+        </div>
+        <div class="sectionContent">
+            <img src="images/c1.jpg" alt="">
+            <div class="text">
+                <ul>
+                    <li>这是文案</li>
+                    <li>这是文案</li>
+                    <li>这是文案</li>
+                    <li>这是文案</li>
+                </ul>
+            </div>
+            <img src="images/c1.jpg" alt="">
+            <div class="text">
+                <ul>
+                    <li>这是文案</li>
+                    <li>这是文案</li>
+                    <li>这是文案</li>
+                    <li>这是文案</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--/模块一-->
+
+    <!--模块二-->
+    <section id="section3" class="section clearfix">
+        <div class="sectionTop">
+            <h3>模块一</h3>
+        </div>
+        <div class="sectionContent">
+            <img src="images/c1.jpg" alt="">
+            <div class="text">
+                <ul>
+                    <li>这是文案</li>
+                    <li>这是文案</li>
+                    <li>这是文案</li>
+                    <li>这是文案</li>
+                </ul>
+            </div>
+            <img src="images/c1.jpg" alt="">
+            <div class="text">
+                <ul>
+                    <li>这是文案</li>
+                    <li>这是文案</li>
+                    <li>这是文案</li>
+                    <li>这是文案</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--/模块二-->
+
+    <!--文章部分-->
+    <section id="section4">
+        <article class="article onePic clearfix">
+            <img src="images/c2.jpg" alt="">
+            <h4>这是文章标题</h4>
+            <p><span>文章来源</span><span> 6分钟前</span></p>
+        </article>
+        <article class="article onePic clearfix">
+            <img src="images/c2.jpg" alt="">
+            <h4>这是另一篇文章标题</h4>
+            <p><span>文章来源</span><span> 6分钟前</span></p>
+        </article>
+        <article class="article morePic clearfix">
+            <h4>这是另一篇文章标题</h4>
+            <div class="imgList">
+                <div class="list">
+                    <img src="images/c2.jpg" alt="">
+                </div>
+                <div class="list">
+                    <img src="images/c2.jpg" alt="">
+                </div>
+                <div class="list">
+                    <img src="images/c2.jpg" alt="">
+                </div>
+            </div>
+            <p><span>文章来源</span><span> 6分钟前</span></p>
+        </article>
+    </section>
+    <!--/文章部分-->
+</div>
+</body>
+</html>
