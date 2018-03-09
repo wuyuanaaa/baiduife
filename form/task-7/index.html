@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务七：UI组件之排序表格</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .table {
+            margin: 100px auto;
+            border-spacing: 0;
+            border: 1px solid #aeaeae;
+        }
+        .table th {
+            background-color: #5c5c5c;
+            height: 40px;
+            width: 120px;
+            color: #fdfdfd;
+        }
+        .table th+th {
+            border-left: 1px solid #fff;
+            position: relative;
+        }
+        .table th+th::after,
+        .table th+th::before {
+            content: '▲';
+            color: #fdfdfd;
+            position: absolute;
+            font-size: 12px;
+            right: 10px;
+            top: 5px;
+            transform: scaleY(.8);
+        }
+        .table th+th::after {
+            top: 20px;
+            transform: rotate(180deg) scaleY(.8);
+        }
+        .table td {
+            width: 120px;
+            border: 1px solid #aeaeae;
+            height: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+
+</div>
+</body>
+</html>
+<script src="js/index.js"></script>
