@@ -1,9 +1,12 @@
 # ife task 整理#
 
 ## JavaScript ##
-1.[任务一：零基础JavaScript编码（一）](https://github.com/wuyuanaaa/baiduife/blob/master/JavaScript/task-1.html)input读取
-2.[任务二：零基础JavaScript编码（二）](https://github.com/wuyuanaaa/baiduife/blob/master/JavaScript/task-2.html)数据的筛选
-3.[任务三：零基础JavaScript编码（三）](https://github.com/wuyuanaaa/baiduife/blob/master/JavaScript/task-3.html)数据的排序
+1.[任务一：零基础JavaScript编码（一）](https://github.com/wuyuanaaa/baiduife/blob/master/JavaScript/task-1.html)input读取  
+
+2.[任务二：零基础JavaScript编码（二）](https://github.com/wuyuanaaa/baiduife/blob/master/JavaScript/task-2.html)数据的筛选  
+
+3.[任务三：零基础JavaScript编码（三）](https://github.com/wuyuanaaa/baiduife/blob/master/JavaScript/task-3.html)数据的排序  
+
 4.[任务四：基础JavaScript练习（一）](https://github.com/wuyuanaaa/baiduife/blob/master/JavaScript/task-4.html)前后插入数据、数据的删除
 5.[任务五：基础JavaScript练习（二）](https://github.com/wuyuanaaa/baiduife/blob/master/JavaScript/task-5.html)数据的柱状图显示，柱状图排序
 6.[任务六：基础JavaScript练习（三）](https://github.com/wuyuanaaa/baiduife/blob/master/JavaScript/task-6.html)批量添加内容、正则查询替换、数据查询
