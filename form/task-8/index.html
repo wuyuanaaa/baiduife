@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UI组件之色彩选择器</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: PingFang SC, STHeitiSC-Light, Helvetica-Light, arial, sans-serifmargink;
+        }
+        .box {
+            margin: 30px;
+        }
+        .left {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            border: 2px solid #cbcbcb;
+            float: left;
+        }
+        .left .left-bar {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 16px;
+            height: 16px;
+            background-color: #282828;
+            border-radius: 50%;
+            border: 2px solid #fff;
+        }
+        .center {
+            position: relative;
+            width: 20px;
+            height: 400px;
+            border: 2px solid #cbcbcb;
+            float: left;
+            margin-left: 10px;
+            background-image: -webkit-linear-gradient(top, rgb(255, 0, 0), rgb(255, 255, 0) 16.7%, rgb(0, 255, 0) 33.4%, rgb(0, 255, 255) 50%, rgb(0, 0, 255) 66.7%, rgb(255, 0, 255) 83.4%, rgb(255, 0, 0) 100%);
+        }
+        .center .center-bar {
+            position: absolute;
+            width: 30px;
+            height: 6px;
+            border: 1px solid #000;
+            background-color: #282828;
+            top: -3px;
+            left: -5px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .right {
+            height: 400px;
+            float: left;
+            margin-left: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .right .c-num {
+            position: relative;
+        }
+        .right label {
+            display: inline-block;
+            width: 13px;
+            line-height: 40px;
+            font-size: 16px;
+            font-weight: bold;
+            -moz-user-select: none; /*火狐*/
+            -webkit-user-select: none; /*webkit浏览器*/
+            -ms-user-select: none; /*IE10*/
+            -khtml-user-select: none; /*早期浏览器*/
+            user-select: none;
+        }
+        .right input {
+            box-sizing: border-box;
+            height: 40px;
+            width: 100px;
+            margin-left: 5px;
+            border: 2px solid #cbcbcb;
+            border-radius:2px;
+            padding-left: 10px;
+            font-weight: bold;
+        }
+        .right .line {
+            height: 2px;
+            width: 100%;
+            background-color: #cbcbcb;
+        }
+        .right .control {
+            box-sizing: border-box;
+            width: 29px;
+            height: 38px;
+            border-left: 2px solid #cbcbcb;
+            position: absolute;
+            right: 0;
+            top: 2px;
+        }
+        .right .control .up,
+        .right .control .down {
+            width: 26px;
+            height: 19px;
+            text-align: center;
+            font-size: 14px;
+            -moz-user-select: none; /*火狐*/
+            -webkit-user-select: none; /*webkit浏览器*/
+            -ms-user-select: none; /*IE10*/
+            -khtml-user-select: none; /*早期浏览器*/
+            user-select: none;
+        }
+        .right .control .up:hover,
+        .right .control .down:hover {
+            background-color: #cbcbcb;
+        }
+        .right .control .down {
+            transform: rotate(180deg);
+        }
+        
+        .show {
+            float: left;
+            margin-left: 20px;
+            width: 120px;
+            height: 404px;
+        }
+        .showBox {
+            width: 80px;
+            height: 80px;
+            background-color: #ff8392;
+            margin: 10px auto;
+            border-radius: 50%;
+        }
+        .show h4 {
+            font-size: 16px;
+            text-align: center;
+            line-height: 1.6;
+        }
+        .show p {
+            font-size: 12px;
+            text-align: center;
+            line-height: 2;
+        }
+        .show button {
+            display: block;
+            width: 50px;
+            height: 24px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="left">
+        <canvas id="palette"></canvas>
+        <div class="left-bar"></div>
+    </div>
+    <div class="center">
+        <div class="center-bar"></div>
+    </div>
+    <div class="right">
+        <div class="c-num">
+            <label for="R">R</label>
+            <input id="R" type="text" value="200">
+            <div class="control control-rgb">
+                <div class="up">▲</div>
+                <div class="down">▲</div>
+            </div>
+        </div>
+        <div class="c-num">
+            <label for="G">G</label>
+            <input id="G" type="text" value="200">
+            <div class="control control-rgb">
+                <div class="up">▲</div>
+                <div class="down">▲</div>
+            </div>
+        </div>
+        <div class="c-num">
+            <label for="B">B</label>
+            <input id="B" type="text" value="250">
+            <div class="control control-rgb">
+                <div class="up">▲</div>
+                <div class="down">▲</div>
+            </div>
+        </div>
+        <span class="line"></span>
+        <div class="c-num">
+            <label for="H">H</label>
+            <input id="H" type="text" value="200">
+            <div class="control control-h">
+                <div class="up">▲</div>
+                <div class="down">▲</div>
+            </div>
+        </div>
+        <div class="c-num">
+            <label for="S">S</label>
+            <input id="S" type="text" value="0.88">
+            <div class="control control-sl">
+                <div class="up">▲</div>
+                <div class="down">▲</div>
+            </div>
+        </div>
+        <div class="c-num">
+            <label for="L">L</label>
+            <input id="L" type="text" value="0.44">
+            <div class="control control-sl">
+                <div class="up">▲</div>
+                <div class="down">▲</div>
+            </div>
+        </div>
+    </div>
+    <div class="show">
+        <div class="showBox"></div>
+        <h4>RGB</h4>
+        <p>rgb(<span class="rgb-r">1</span>,<span class="rgb-g">1</span>,<span class="rgb-b">1</span>)</p>
+        <button id="copyRGB">copy</button>
+        <h4>HSL</h4>
+        <p>hsl(<span class="hsl-h">1</span>,<span class="hsl-s">1</span>,<span class="hsl-l">1</span>)</p>
+        <button id="copyHSL">copy</button>
+        <h4>HSV</h4>
+        <p>hsv(<span class="hsv-h">1</span>,<span class="hsv-s">1</span>,<span class="hsv-v">1</span>)</p>
+        <button id="copyHSV">copy</button>
+        <h4>CSS</h4>
+        <p>#<span class="css-r">1</span><span class="css-g">1</span><span class="css-b">1</span></p>
+        <button id="copyCSS">copy</button>
+    </div>
+</div>
+</body>
+</html>
+<script src="js/jsnew.js"></script>
