@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>使用CSS实现折叠面板</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+    /*暂时不知如何再次点击折叠面板*/
+    p {
+        margin: 0;
+        padding: 0;
+    }
+    html,body{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+    }
+    input[type=radio]{
+        display: none;
+    }
+    input:checked +label {
+        border-bottom: 1px solid #ccc;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+    }
+    input:checked +label + div{
+        display: block;
+        height: 150px;
+        opacity: 1;
+    }
+    .container {
+        width: 80%;
+        margin: 20px auto;
+    }
+    .control {
+        margin-top: 10px;
+    }
+    .control>label {
+        width: 100%;
+        background: #eee;
+        display: block;
+        line-height: 2;
+        border: 1px solid #ccc;
+        border-radius: 4px 4px 0 0;
+        text-indent: 10px;
+    }
+    .control>div{
+        width: 100%;
+        overflow: hidden;
+        background: #fff;
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        border-radius: 0 0 4px 4px;
+        transition: all .5s;
+        height: 0;
+        opacity: 0;
+    }
+
+
+</style>
+<body>
+<div class="container">
+    <div class="control">
+        <input type="radio" name="controller" value="" id="controller-1">
+        <label for="controller-1">Collapsible Group Item #1 </label>
+        <div id="content1">
+            <p>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </p>
+        </div>
+
+
+    </div>
+    <div class="control">
+        <input type="radio" name="controller" value="" id="controller-2">
+        <label for="controller-2">Collapsible Group Item #2</label>
+        <div id="controller-2">
+            <p>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </p>
+        </div>
+
+
+    </div>
+    <div class="control">
+        <input type="radio" name="controller" value="" id="controller-3">
+        <label for="controller-3">Collapsible Group Item #3 </label>
+        <div id="controller-3">
+            <p>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </p>
+        </div>
+
+
+    </div>
+
+</div>
+</body>
+</html>

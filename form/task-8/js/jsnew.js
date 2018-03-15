@@ -35,7 +35,6 @@
     var cssG = document.querySelector('.css-g');
     var cssB = document.querySelector('.css-b');
 
-
     // 绘制取色板
     function setCanvas(r, g, b) {
         var ctx = canvas.getContext("2d");
@@ -65,7 +64,7 @@
     };
     
     // 取色条拖动事件
-    centerBar.onmousedown = function (e) {
+    centerBar.onmousedown = function () {
         document.onmousemove = function (e) {
             var y = e.clientY - center.offsetTop - 2;
             if(y < 0){
@@ -147,15 +146,7 @@
         return [h,s,v]
     }
 
-    // 设置颜色
-    function setLeftColor(h,s,v) {
-        var rgb = HSVtoRGB(h,s,v);
-        leftBar.style.backgroundColor = 'rgb('+rgb[0]+','+rgb[1]+','+rgb[2]+')';
-    }
-    function setLeftColorRgb(r,g,b) {
-        var rgb = HSVtoRGB(h,s,v);
-        leftBar.style.backgroundColor = 'rgb('+r+','+g+','+b+')';
-    }
+
     function setNum() {
         var hsv = getLeftColor();
         var rgb = HSVtoRGB(hsv[0],hsv[1],hsv[2]);
