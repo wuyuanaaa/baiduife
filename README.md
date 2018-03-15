@@ -1,10 +1,11 @@
 ## 3.15新增  ##    
     
-[使用CSS实现折叠面板](https://github.com/wuyuanaaa/baiduife/blob/master/html-css/task-14.html)   
+[使用CSS实现折叠面板](https://github.com/wuyuanaaa/baiduife/blob/master/html-css/task-14.html)  \-\- [预览](https://wuyuanaaa.github.io/baiduife/html-css/task-14.html)       
+   
   
 -  才知道label的关联还能这么用  
   
-[CSS3饼状loading效果](https://github.com/wuyuanaaa/baiduife/blob/master/html-css/task-15.html)   
+[CSS3饼状loading效果](https://github.com/wuyuanaaa/baiduife/blob/master/html-css/task-15.html) \-\- [预览](https://wuyuanaaa.github.io/baiduife/html-css/task-15.html)         
     
 -  纯CSS实现loading 用的方法很纠结  暂时就这样吧
 
