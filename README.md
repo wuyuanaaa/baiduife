@@ -11,7 +11,7 @@
 
 ## 3.14新增  ##  
   
-[UI组件之色彩选择器](https://github.com/wuyuanaaa/baiduife/blob/master/form/task-8/index.html)[预览](https://wuyuanaaa.github.io/baiduife/form/task-8/index.html)     
+[UI组件之色彩选择器](https://github.com/wuyuanaaa/baiduife/blob/master/form/task-8/index.html)  *[预览](https://wuyuanaaa.github.io/baiduife/form/task-8/index.html)     
 
 #### 类似PS色彩选择，分主色选择条和选色卡，暂实现以下功能  ####  
 1.主色区跟选色卡点击/拖动选色；    
