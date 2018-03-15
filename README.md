@@ -1,9 +1,11 @@
-## 3.14新增 
-[UI组件之色彩选择器](https://github.com/wuyuanaaa/baiduife/tree/master/form/task-8)  
+## 3.14新增  ##  
+  
+[UI组件之色彩选择器](https://github.com/wuyuanaaa/baiduife/tree/master/form/task-8)     
+
 #### 类似PS色彩选择，分主色选择条和选色卡，暂实现以下功能  ####  
-1.主色区跟选色卡点击/拖动选色；
-2.取色器位置变化时自动改变自身背景颜色、文字区域自动改变、同时显示RGB、HSL、HSV、CSS颜色数值，并可点击按钮复制；
-3.输入框可以手动输入RGB、HSL数值或点击上下按钮微调，其他区域协同改变显示
+1.主色区跟选色卡点击/拖动选色；    
+2.取色器位置变化时自动改变自身背景颜色、文字区域自动改变、同时显示RGB、HSL、HSV、CSS颜色数值，并可点击按钮复制；    
+3.输入框可以手动输入RGB、HSL数值或点击上下按钮微调，其他区域协同改变显示    
 
 
 # ife task 整理 #
