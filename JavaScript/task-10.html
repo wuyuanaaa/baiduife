@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义网页右键菜单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+        body {
+            background-color: #f5f5f5;
+            position: relative;
+            overflow: hidden;
+        }
+        .content {
+            margin-left: 250px;
+        }
+        span {
+            width: 120px;
+            background-color: rgba(200,200,200,.6);
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #cc7f4c;
+            display: none;
+        }
+        #menu {
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+            border: 1px solid #b6b6b6;
+            background-color: #e4e4e4;
+            padding: 10px;
+            box-shadow: 5px 5px 1px -2px #ccc;
+        }
+        #menu>ul {
+            display: inline-block;
+        }
+        #menu>ul>li {
+            border: 1px solid #fbfbfb;
+            line-height: 26px;
+            font-size: 14px;
+            cursor: default;
+            padding: 0 10px;
+        }
+        #menu>ul>li:hover {
+            background-color: #c4c4c4;
+        }
+    </style>
+</head>
+<body>
+<article class="content" id="content">
+    <br>
+    <h2>再见二丁目</h2>
+    <br>
+    <p>满街脚步 突然静了</p>
+    <p>满天柏树 突然没有动摇</p>
+    <p>这一刹 我只需要 一罐热茶吧</p>
+    <p>那味道 似是什么 都不紧要</p>
+    <br>
+    <p>唱片店内 传来异国民谣</p>
+    <p>那种快乐 突然被我需要</p>
+    <p>不亲切 至少不似 想你般奥妙</p>
+    <p>情和调 随著怀缅 变得萧条</p>
+    <br>
+    <p>原来过得很快乐 只我一人未发觉</p>
+    <p>如能忘掉渴望 岁月长 衣裳薄</p>
+    <p>无论于什么角落 不假设你或会在旁</p>
+    <p>我也可畅游异国 放心吃喝</p>
+    <br>
+    <p>转街过巷 就如滑过浪潮</p>
+    <p>听天说地 仍然剩我心跳</p>
+    <p>关于你 冥想不了 可免都免掉</p>
+    <p>情和欲 留待下个化身燃烧</p>
+    <br>
+    <p>原来过得很快乐 只我一人未发觉</p>
+    <p>如能忘掉渴望 岁月长 衣裳薄</p>
+    <p>无论于什么角落 不假设你或会在旁</p>
+    <p>我也可畅游异国 放心吃喝</p>
+    <br>
+    <p>原来我非不快乐 只我一人未发觉</p>
+    <p>如能忘掉渴望 岁月长 衣裳薄</p>
+    <p>无论于什么角落 不假设你或会在旁</p>
+    <p>我也可畅游异国 再找记托</p>
+    <p>我也可畅游异国 再找记托</p>
+    <br>
+    <h2>再见二丁目</h2>
+    <br>
+    <p>满街脚步 突然静了</p>
+    <p>满天柏树 突然没有动摇</p>
+    <p>这一刹 我只需要 一罐热茶吧</p>
+    <p>那味道 似是什么 都不紧要</p>
+    <br>
+    <p>唱片店内 传来异国民谣</p>
+    <p>那种快乐 突然被我需要</p>
+    <p>不亲切 至少不似 想你般奥妙</p>
+    <p>情和调 随著怀缅 变得萧条</p>
+    <br>
+    <p>原来过得很快乐 只我一人未发觉</p>
+    <p>如能忘掉渴望 岁月长 衣裳薄</p>
+    <p>无论于什么角落 不假设你或会在旁</p>
+    <p>我也可畅游异国 放心吃喝</p>
+    <br>
+    <p>转街过巷 就如滑过浪潮</p>
+    <p>听天说地 仍然剩我心跳</p>
+    <p>关于你 冥想不了 可免都免掉</p>
+    <p>情和欲 留待下个化身燃烧</p>
+    <br>
+    <p>原来过得很快乐 只我一人未发觉</p>
+    <p>如能忘掉渴望 岁月长 衣裳薄</p>
+    <p>无论于什么角落 不假设你或会在旁</p>
+    <p>我也可畅游异国 放心吃喝</p>
+    <br>
+    <p>原来我非不快乐 只我一人未发觉</p>
+    <p>如能忘掉渴望 岁月长 衣裳薄</p>
+    <p>无论于什么角落 不假设你或会在旁</p>
+    <p>我也可畅游异国 再找记托</p>
+    <p>我也可畅游异国 再找记托</p>
+</article>
+<span id="show"></span>
+<aside id="menu">
+    <ul>
+        <li><a href="#">返回顶部</a></li>
+        <li><a href="http://music.163.com/#/song?id=317245">前往试听</a></li>
+    </ul>
+</aside>
+</body>
+</html>
+<script>
+    (function () {
+        function $(id) {return document.getElementById(id)}
+
+        var show = $("show");
+        var content = $("content");
+        var menu = $('menu');
+        var searchTxt = $('searchTxt');
+
+        // 获取页面的宽高 卷去的宽高
+        function scroll() {
+            if(document.compatMode == "CSS1Compat") //声明了DTD
+        //  检测是不是怪异模式的浏览器
+            {
+                return{
+                    left:document.documentElement.scrollLeft,
+                    top:document.documentElement.scrollTop,
+                    width:document.documentElement.scrollWidth,
+                    height:document.documentElement.scrollHeight
+                }
+            }
+            return {
+         // 剩下的都是怪异模式的
+                left:document.body.scrollLeft,
+                top:document.body.scrollTop,
+                width:document.body.scrollWidth,
+                height:document.body.scrollHeight
+            }
+        }
+        //  获取选中内容
+        content.onmouseup = function (event) {
+            var event = event || window.event;
+            var x = event.clientX;
+            var y = event.clientY;
+            var txt;
+            if(window.getSelection)
+            {
+                txt = window.getSelection().toString();
+            }
+            else
+            {
+                txt = document.selection.createRange().text;
+            }
+            if(txt)
+            {
+                showBox(x,y,txt);
+            }
+        };
+        document.onmousedown = function (event) {
+            var event = event || window.event;
+            var targetId = event.target ? event.target.id : event.srcElement.id;
+            if(targetId != "show")
+            {
+                show.style.display = "none";
+            }
+        };
+        function showBox(mouseX,mouseY,contentText) {
+            show.style.display = "block";
+            show.style.top =scroll().top + mouseY + "px";
+            show.style.left = mouseX + "px";
+            show.innerHTML = contentText;
+        }
+        // 右键菜单
+        document.oncontextmenu = function (e) {
+            e.preventDefault();  // 阻止默认事件
+            menu.style.display = 'inline-block';
+            var x = e.clientX + scroll().left;
+            var y = e.clientY + scroll().top;
+            // 判断是否在边边
+            // 如果靠近右边框，则弹出框显示在鼠标左侧
+            if(x > scroll().width - menu.offsetWidth){
+                x -= menu.offsetWidth;
+            }
+            if(y > scroll().height - menu.offsetHeight){
+                y -= menu.offsetHeight;
+            }
+
+            menu.style.top = y + 'px';
+            menu.style.left = x + 'px';
+        };
+        // 点击其他区域右键菜单消失
+        document.addEventListener('click',function (e) {
+            if(e.target != menu){
+                menu.style.display = 'none';
+            }
+        })
+
+    })();
+
+</script>

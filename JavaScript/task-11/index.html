@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>标签云</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+        .main {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            perspective: 5000px;
+        }
+        .main>div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            display: inline-block;
+        }
+        .main>div>span {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+
+</div>
+</body>
+</html>
+<script src="js/index.js"></script>

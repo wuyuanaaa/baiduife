@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则练习</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var myRe = /d(b+)d/g;
+    var myArray = myRe.exec("cdbbdbsbz");
+    console.log(myArray);
+
+    var regex = /1[358]\d{9}/; // 手机号码
+
+    console.log(regex.test('12345678909')) // false
+
+    var regex1 = /\b(\w+)\b\s+\1\b/; // 匹配有相邻的重复单词
+
+    console.log(regex1.test('foo foo bar'));
+    console.log(regex1.test('foo bar foo'));
+    console.log(regex1.test('foo  barbar bar'));
+
+</script>
